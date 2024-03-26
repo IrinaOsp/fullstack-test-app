@@ -1,7 +1,5 @@
-// import { express } from "express";
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
-// import { PrismaClient } from "@prisma/client";
 
 const app = express();
 const prisma = new PrismaClient();
