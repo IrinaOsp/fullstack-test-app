@@ -17,14 +17,14 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get<User[]>(`${apiUrl}/users`);
+        const res = await axios.get(`${apiUrl}/users`);
         setUsers(res.data.reverse());
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [apiUrl]);
 
   //create user
   const createUser = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -138,14 +138,13 @@ export default function Home() {
           {users.map((user) => (
             <div
               key={user.id}
-              className="flex items-center justify-between bg-white p-4"
+              className="flex items-center justify-between bg-white p-4 rounded-lg shadow"
             >
               <CardComponent card={user} />
               <button
                 onClick={() => deleteUser(user.id)}
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
               >
-                {" "}
                 Delete user
               </button>
             </div>
